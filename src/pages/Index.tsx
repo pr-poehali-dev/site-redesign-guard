@@ -8,310 +8,342 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import Icon from '@/components/ui/icon'
 
 const Index = () => {
-  const [contactForm, setContactForm] = useState({
+  const [applicationForm, setApplicationForm] = useState({
     name: '',
-    email: '',
     phone: '',
-    message: '',
+    email: '',
+    age: '',
+    region: '',
     profession: '',
-    region: ''
+    experience: '',
+    message: ''
   })
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const [consultationForm, setConsultationForm] = useState({
+    name: '',
+    phone: ''
+  })
+
+  const handleApplicationSubmit = (e: React.FormEvent) => {
     e.preventDefault()
-    console.log('Форма отправлена:', contactForm)
-    // Здесь будет логика отправки формы
+    console.log('Заявка на контракт:', applicationForm)
   }
 
-  const professions = [
-    'Менеджер по продажам',
-    'Маркетинг-специалист', 
-    'HR-специалист',
-    'Финансовый аналитик',
-    'Юрист',
-    'IT-специалист',
-    'Логист',
-    'Бухгалтер'
-  ]
-
-  const regions = [
-    'Москва',
-    'Санкт-Петербург',
-    'Московская область',
-    'Новосибирск',
-    'Екатеринбург',
-    'Нижний Новгород',
-    'Казань',
-    'Челябинск',
-    'Омск',
-    'Самара'
-  ]
+  const handleConsultationSubmit = (e: React.FormEvent) => {
+    e.preventDefault()
+    console.log('Заявка на консультацию:', consultationForm)
+  }
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-slate-50 to-white">
+    <div className="min-h-screen bg-white">
       {/* Header */}
-      <header className="bg-white shadow-sm border-b">
-        <div className="container mx-auto px-4 py-4">
-          <nav className="flex items-center justify-between">
-            <div className="flex items-center space-x-2">
-              <Icon name="Shield" size={32} className="text-primary" />
-              <h1 className="text-2xl font-bold text-slate-900">Защитник.РФ</h1>
+      <header className="bg-white border-b border-gray-200 sticky top-0 z-50">
+        <div className="container mx-auto px-4 py-3">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center space-x-4">
+              <div className="w-10 h-10 bg-red-600 rounded-full flex items-center justify-center">
+                <span className="text-white font-bold text-lg">З</span>
+              </div>
+              <div>
+                <h1 className="text-xl font-bold text-gray-900">ЗАЩИТНИК.РФ</h1>
+                <p className="text-sm text-gray-600">Контракт на военную службу</p>
+              </div>
             </div>
-            <div className="hidden md:flex space-x-8">
-              <a href="#home" className="text-slate-700 hover:text-primary transition-colors">Главная</a>
-              <a href="#professions" className="text-slate-700 hover:text-primary transition-colors">Профессии</a>
-              <a href="#regions" className="text-slate-700 hover:text-primary transition-colors">Регионы</a>
-              <a href="#conditions" className="text-slate-700 hover:text-primary transition-colors">Условия</a>
-              <a href="#contact" className="text-slate-700 hover:text-primary transition-colors">Контакты</a>
+            <div className="hidden md:flex items-center space-x-6">
+              <span className="text-blue-600 font-semibold">8 (800) 100-12-53</span>
+              <Button className="bg-red-600 hover:bg-red-700">
+                Заключить контракт
+              </Button>
             </div>
-            <Button className="md:hidden" variant="ghost" size="icon">
-              <Icon name="Menu" size={24} />
-            </Button>
-          </nav>
+          </div>
         </div>
       </header>
 
       {/* Hero Section */}
-      <section id="home" className="py-20 bg-gradient-to-r from-slate-900 to-slate-800 text-white">
-        <div className="container mx-auto px-4 text-center">
-          <h2 className="text-5xl font-bold mb-6">Заключи контракт на военную службу</h2>
-          <p className="text-xl text-slate-300 mb-8 max-w-3xl mx-auto">
-            Пройди профессиональный отбор и стань частью команды защитников России. 
-            Стабильная работа, достойная зарплата, социальные гарантии.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="lg" className="text-lg px-8 py-3">
-              <Icon name="FileText" size={20} className="mr-2" />
-              Подать заявку
-            </Button>
-            <Button size="lg" variant="outline" className="text-lg px-8 py-3 bg-transparent border-white text-white hover:bg-white hover:text-slate-900">
-              <Icon name="Phone" size={20} className="mr-2" />
-              Консультация
-            </Button>
-          </div>
-        </div>
-      </section>
-
-      {/* Stats Section */}
-      <section className="py-16 bg-white">
+      <section className="bg-gradient-to-r from-blue-900 via-blue-800 to-blue-900 text-white py-16">
         <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-            <div className="text-center">
-              <div className="text-4xl font-bold text-primary mb-2">150+</div>
-              <p className="text-slate-600">Профессий</p>
-            </div>
-            <div className="text-center">
-              <div className="text-4xl font-bold text-primary mb-2">85</div>
-              <p className="text-slate-600">Регионов</p>
-            </div>
-            <div className="text-center">
-              <div className="text-4xl font-bold text-primary mb-2">50000+</div>
-              <p className="text-slate-600">Контрактников</p>
-            </div>
-            <div className="text-center">
-              <div className="text-4xl font-bold text-primary mb-2">100%</div>
-              <p className="text-slate-600">Гарантии</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Professions Section */}
-      <section id="professions" className="py-16 bg-slate-50">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
-            <h3 className="text-3xl font-bold text-slate-900 mb-4">Доступные профессии</h3>
-            <p className="text-lg text-slate-600 max-w-2xl mx-auto">
-              Выберите специальность, которая соответствует вашим навыкам и интересам
+          <div className="max-w-4xl">
+            <h2 className="text-5xl md:text-6xl font-bold mb-6 leading-tight">
+              КОНТРАКТ НА СВО:
+              <br />
+              ПРОЙДИ ОТБОР И ЗАКЛЮЧИ
+              <br />
+              КОНТРАКТ НА ВОЕННУЮ СЛУЖБУ
+            </h2>
+            <p className="text-xl md:text-2xl text-blue-100 mb-8 max-w-3xl">
+              Защищай Родину с достойной зарплатой от 204 000 рублей в месяц, 
+              социальными гарантиями и поддержкой государства
             </p>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {professions.map((profession, index) => (
-              <Card key={index} className="hover:shadow-lg transition-shadow cursor-pointer">
-                <CardHeader className="text-center pb-4">
-                  <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-3">
-                    <Icon name="Briefcase" size={24} className="text-primary" />
-                  </div>
-                  <CardTitle className="text-lg">{profession}</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <Button variant="outline" className="w-full">
-                    Подробнее
-                  </Button>
-                </CardContent>
-              </Card>
-            ))}
+            <div className="flex flex-col sm:flex-row gap-4">
+              <Button size="lg" className="bg-red-600 hover:bg-red-700 text-lg px-8 py-4">
+                ПОДАТЬ ЗАЯВКУ НА КОНТРАКТ
+              </Button>
+              <Button size="lg" variant="outline" className="text-lg px-8 py-4 border-white text-white hover:bg-white hover:text-blue-900">
+                ПОЛУЧИТЬ КОНСУЛЬТАЦИЮ
+              </Button>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Regions Section */}
-      <section id="regions" className="py-16 bg-white">
+      {/* Benefits Section */}
+      <section className="py-16 bg-gray-50">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
-            <h3 className="text-3xl font-bold text-slate-900 mb-4">Регионы службы</h3>
-            <p className="text-lg text-slate-600 max-w-2xl mx-auto">
-              Выберите удобный для вас регион прохождения службы
-            </p>
-          </div>
-          <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
-            {regions.map((region, index) => (
-              <Card key={index} className="hover:shadow-md transition-shadow cursor-pointer">
-                <CardContent className="p-4 text-center">
-                  <Icon name="MapPin" size={24} className="text-primary mx-auto mb-2" />
-                  <p className="font-medium text-slate-900">{region}</p>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Conditions Section */}
-      <section id="conditions" className="py-16 bg-slate-50">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
-            <h3 className="text-3xl font-bold text-slate-900 mb-4">Условия службы</h3>
-            <p className="text-lg text-slate-600 max-w-2xl mx-auto">
-              Современные условия и социальные гарантии для каждого контрактника
-            </p>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <Card className="text-center">
-              <CardHeader>
-                <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <Icon name="Banknote" size={32} className="text-green-600" />
-                </div>
-                <CardTitle>Достойная оплата</CardTitle>
-                <CardDescription>От 204 000 рублей в месяц</CardDescription>
-              </CardHeader>
-              <CardContent>
-                <p className="text-slate-600">Стабильная заработная плата с возможностью премий и доплат</p>
-              </CardContent>
-            </Card>
-
-            <Card className="text-center">
-              <CardHeader>
-                <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <Icon name="Heart" size={32} className="text-blue-600" />
-                </div>
-                <CardTitle>Соцгарантии</CardTitle>
-                <CardDescription>Полный социальный пакет</CardDescription>
-              </CardHeader>
-              <CardContent>
-                <p className="text-slate-600">Медицинское обслуживание, отпуск, пенсионное обеспечение</p>
-              </CardContent>
-            </Card>
-
-            <Card className="text-center">
-              <CardHeader>
-                <div className="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <Icon name="GraduationCap" size={32} className="text-purple-600" />
-                </div>
-                <CardTitle>Обучение</CardTitle>
-                <CardDescription>Профессиональная подготовка</CardDescription>
-              </CardHeader>
-              <CardContent>
-                <p className="text-slate-600">Обучение новым навыкам и повышение квалификации</p>
-              </CardContent>
-            </Card>
-          </div>
-        </div>
-      </section>
-
-      {/* Contact Form Section */}
-      <section id="contact" className="py-16 bg-white">
-        <div className="container mx-auto px-4">
-          <div className="max-w-2xl mx-auto">
-            <div className="text-center mb-12">
-              <h3 className="text-3xl font-bold text-slate-900 mb-4">Подать заявку</h3>
-              <p className="text-lg text-slate-600">
-                Заполните форму, и наш специалист свяжется с вами для консультации
-              </p>
+          <h3 className="text-3xl md:text-4xl font-bold text-center text-gray-900 mb-12">
+            ПРЕИМУЩЕСТВА СЛУЖБЫ ПО КОНТРАКТУ
+          </h3>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div className="text-center">
+              <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <Icon name="Banknote" size={32} className="text-green-600" />
+              </div>
+              <h4 className="text-xl font-bold text-gray-900 mb-2">ДОСТОЙНАЯ ОПЛАТА</h4>
+              <p className="text-lg text-green-600 font-semibold mb-2">от 204 000 ₽</p>
+              <p className="text-gray-600">в месяц + премии и доплаты</p>
             </div>
             
-            <Card>
+            <div className="text-center">
+              <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <Icon name="Shield" size={32} className="text-blue-600" />
+              </div>
+              <h4 className="text-xl font-bold text-gray-900 mb-2">СОЦИАЛЬНАЯ ЗАЩИТА</h4>
+              <p className="text-lg text-blue-600 font-semibold mb-2">Полный пакет</p>
+              <p className="text-gray-600">льгот и гарантий</p>
+            </div>
+            
+            <div className="text-center">
+              <div className="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <Icon name="GraduationCap" size={32} className="text-purple-600" />
+              </div>
+              <h4 className="text-xl font-bold text-gray-900 mb-2">ОБУЧЕНИЕ</h4>
+              <p className="text-lg text-purple-600 font-semibold mb-2">Бесплатно</p>
+              <p className="text-gray-600">профессиональная подготовка</p>
+            </div>
+            
+            <div className="text-center">
+              <div className="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <Icon name="Home" size={32} className="text-orange-600" />
+              </div>
+              <h4 className="text-xl font-bold text-gray-900 mb-2">ЖИЛЬЕ</h4>
+              <p className="text-lg text-orange-600 font-semibold mb-2">Обеспечение</p>
+              <p className="text-gray-600">служебным жильем</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Statistics Section */}
+      <section className="py-16 bg-blue-900 text-white">
+        <div className="container mx-auto px-4">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+            <div>
+              <div className="text-4xl md:text-5xl font-bold text-yellow-400 mb-2">300+</div>
+              <p className="text-lg">военных специальностей</p>
+            </div>
+            <div>
+              <div className="text-4xl md:text-5xl font-bold text-yellow-400 mb-2">85</div>
+              <p className="text-lg">субъектов РФ</p>
+            </div>
+            <div>
+              <div className="text-4xl md:text-5xl font-bold text-yellow-400 mb-2">100%</div>
+              <p className="text-lg">трудоустройство</p>
+            </div>
+            <div>
+              <div className="text-4xl md:text-5xl font-bold text-yellow-400 mb-2">24/7</div>
+              <p className="text-lg">поддержка</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Requirements Section */}
+      <section className="py-16 bg-white">
+        <div className="container mx-auto px-4">
+          <h3 className="text-3xl md:text-4xl font-bold text-center text-gray-900 mb-12">
+            ТРЕБОВАНИЯ К КАНДИДАТАМ
+          </h3>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+            <div>
+              <h4 className="text-2xl font-bold text-gray-900 mb-6">ДЛЯ ГРАЖДАН РФ:</h4>
+              <ul className="space-y-3 text-lg">
+                <li className="flex items-start space-x-3">
+                  <Icon name="CheckCircle" size={24} className="text-green-500 mt-0.5" />
+                  <span>Возраст от 18 до 50 лет</span>
+                </li>
+                <li className="flex items-start space-x-3">
+                  <Icon name="CheckCircle" size={24} className="text-green-500 mt-0.5" />
+                  <span>Образование не ниже основного общего</span>
+                </li>
+                <li className="flex items-start space-x-3">
+                  <Icon name="CheckCircle" size={24} className="text-green-500 mt-0.5" />
+                  <span>Годность по состоянию здоровья</span>
+                </li>
+                <li className="flex items-start space-x-3">
+                  <Icon name="CheckCircle" size={24} className="text-green-500 mt-0.5" />
+                  <span>Отсутствие судимости</span>
+                </li>
+              </ul>
+            </div>
+            <div>
+              <h4 className="text-2xl font-bold text-gray-900 mb-6">ДЛЯ ИНОСТРАНЦЕВ:</h4>
+              <ul className="space-y-3 text-lg">
+                <li className="flex items-start space-x-3">
+                  <Icon name="CheckCircle" size={24} className="text-green-500 mt-0.5" />
+                  <span>Возраст от 18 до 50 лет</span>
+                </li>
+                <li className="flex items-start space-x-3">
+                  <Icon name="CheckCircle" size={24} className="text-green-500 mt-0.5" />
+                  <span>Знание русского языка</span>
+                </li>
+                <li className="flex items-start space-x-3">
+                  <Icon name="CheckCircle" size={24} className="text-green-500 mt-0.5" />
+                  <span>Отсутствие двойного гражданства</span>
+                </li>
+                <li className="flex items-start space-x-3">
+                  <Icon name="CheckCircle" size={24} className="text-green-500 mt-0.5" />
+                  <span>Получение гражданства РФ после службы</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Application Form Section */}
+      <section className="py-16 bg-gray-50">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto">
+            <h3 className="text-3xl md:text-4xl font-bold text-center text-gray-900 mb-4">
+              ПОДАТЬ ЗАЯВКУ НА КОНТРАКТ
+            </h3>
+            <p className="text-xl text-center text-gray-600 mb-12">
+              Заполните форму, и мы свяжемся с вами в течение 24 часов
+            </p>
+            
+            <Card className="border-2 border-blue-200">
               <CardContent className="p-8">
-                <form onSubmit={handleSubmit} className="space-y-6">
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <form onSubmit={handleApplicationSubmit} className="space-y-6">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div className="space-y-2">
-                      <Label htmlFor="name">Имя *</Label>
+                      <Label htmlFor="name" className="text-lg font-semibold">Фамилия Имя Отчество *</Label>
                       <Input
                         id="name"
-                        value={contactForm.name}
-                        onChange={(e) => setContactForm(prev => ({ ...prev, name: e.target.value }))}
-                        placeholder="Введите ваше имя"
+                        value={applicationForm.name}
+                        onChange={(e) => setApplicationForm(prev => ({ ...prev, name: e.target.value }))}
+                        placeholder="Иванов Иван Иванович"
+                        className="text-lg p-3"
                         required
                       />
                     </div>
                     <div className="space-y-2">
-                      <Label htmlFor="phone">Телефон *</Label>
+                      <Label htmlFor="phone" className="text-lg font-semibold">Телефон *</Label>
                       <Input
                         id="phone"
                         type="tel"
-                        value={contactForm.phone}
-                        onChange={(e) => setContactForm(prev => ({ ...prev, phone: e.target.value }))}
-                        placeholder="+7 (___) ___-__-__"
+                        value={applicationForm.phone}
+                        onChange={(e) => setApplicationForm(prev => ({ ...prev, phone: e.target.value }))}
+                        placeholder="+7 (999) 123-45-67"
+                        className="text-lg p-3"
                         required
                       />
                     </div>
                   </div>
                   
-                  <div className="space-y-2">
-                    <Label htmlFor="email">Email</Label>
-                    <Input
-                      id="email"
-                      type="email"
-                      value={contactForm.email}
-                      onChange={(e) => setContactForm(prev => ({ ...prev, email: e.target.value }))}
-                      placeholder="your@email.com"
-                    />
-                  </div>
-
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div className="space-y-2">
-                      <Label htmlFor="profession">Интересующая профессия</Label>
-                      <Select value={contactForm.profession} onValueChange={(value) => setContactForm(prev => ({ ...prev, profession: value }))}>
-                        <SelectTrigger>
-                          <SelectValue placeholder="Выберите профессию" />
-                        </SelectTrigger>
-                        <SelectContent>
-                          {professions.map((profession, index) => (
-                            <SelectItem key={index} value={profession}>{profession}</SelectItem>
-                          ))}
-                        </SelectContent>
-                      </Select>
+                      <Label htmlFor="email" className="text-lg font-semibold">Email</Label>
+                      <Input
+                        id="email"
+                        type="email"
+                        value={applicationForm.email}
+                        onChange={(e) => setApplicationForm(prev => ({ ...prev, email: e.target.value }))}
+                        placeholder="ivan@example.com"
+                        className="text-lg p-3"
+                      />
                     </div>
-                    
                     <div className="space-y-2">
-                      <Label htmlFor="region">Предпочитаемый регион</Label>
-                      <Select value={contactForm.region} onValueChange={(value) => setContactForm(prev => ({ ...prev, region: value }))}>
-                        <SelectTrigger>
+                      <Label htmlFor="age" className="text-lg font-semibold">Возраст *</Label>
+                      <Input
+                        id="age"
+                        type="number"
+                        min="18"
+                        max="50"
+                        value={applicationForm.age}
+                        onChange={(e) => setApplicationForm(prev => ({ ...prev, age: e.target.value }))}
+                        placeholder="25"
+                        className="text-lg p-3"
+                        required
+                      />
+                    </div>
+                  </div>
+                  
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div className="space-y-2">
+                      <Label htmlFor="region" className="text-lg font-semibold">Регион проживания *</Label>
+                      <Select value={applicationForm.region} onValueChange={(value) => setApplicationForm(prev => ({ ...prev, region: value }))}>
+                        <SelectTrigger className="text-lg p-3">
                           <SelectValue placeholder="Выберите регион" />
                         </SelectTrigger>
                         <SelectContent>
-                          {regions.map((region, index) => (
-                            <SelectItem key={index} value={region}>{region}</SelectItem>
-                          ))}
+                          <SelectItem value="moscow">Москва</SelectItem>
+                          <SelectItem value="spb">Санкт-Петербург</SelectItem>
+                          <SelectItem value="moscow-region">Московская область</SelectItem>
+                          <SelectItem value="krasnodar">Краснодарский край</SelectItem>
+                          <SelectItem value="rostov">Ростовская область</SelectItem>
+                          <SelectItem value="tatarstan">Республика Татарстан</SelectItem>
+                          <SelectItem value="bashkortostan">Республика Башкортостан</SelectItem>
+                          <SelectItem value="sverdlovsk">Свердловская область</SelectItem>
+                          <SelectItem value="chelyabinsk">Челябинская область</SelectItem>
+                          <SelectItem value="novosibirsk">Новосибирская область</SelectItem>
+                        </SelectContent>
+                      </Select>
+                    </div>
+                    <div className="space-y-2">
+                      <Label htmlFor="profession" className="text-lg font-semibold">Желаемая специальность</Label>
+                      <Select value={applicationForm.profession} onValueChange={(value) => setApplicationForm(prev => ({ ...prev, profession: value }))}>
+                        <SelectTrigger className="text-lg p-3">
+                          <SelectValue placeholder="Выберите специальность" />
+                        </SelectTrigger>
+                        <SelectContent>
+                          <SelectItem value="infantry">Мотострелковые войска</SelectItem>
+                          <SelectItem value="artillery">Артиллерия</SelectItem>
+                          <SelectItem value="communications">Войска связи</SelectItem>
+                          <SelectItem value="engineering">Инженерные войска</SelectItem>
+                          <SelectItem value="logistics">Тыл</SelectItem>
+                          <SelectItem value="medical">Медицинская служба</SelectItem>
+                          <SelectItem value="aviation">Военно-воздушные силы</SelectItem>
+                          <SelectItem value="navy">Военно-морской флот</SelectItem>
                         </SelectContent>
                       </Select>
                     </div>
                   </div>
                   
                   <div className="space-y-2">
-                    <Label htmlFor="message">Сообщение</Label>
+                    <Label htmlFor="experience" className="text-lg font-semibold">Опыт работы/службы</Label>
                     <Textarea
-                      id="message"
-                      value={contactForm.message}
-                      onChange={(e) => setContactForm(prev => ({ ...prev, message: e.target.value }))}
-                      placeholder="Расскажите о себе, своем опыте или задайте вопрос..."
+                      id="experience"
+                      value={applicationForm.experience}
+                      onChange={(e) => setApplicationForm(prev => ({ ...prev, experience: e.target.value }))}
+                      placeholder="Расскажите о своем опыте работы, образовании, навыках..."
                       rows={4}
+                      className="text-lg p-3"
                     />
                   </div>
                   
-                  <Button type="submit" className="w-full" size="lg">
-                    <Icon name="Send" size={20} className="mr-2" />
-                    Отправить заявку
+                  <div className="space-y-2">
+                    <Label htmlFor="message" className="text-lg font-semibold">Дополнительная информация</Label>
+                    <Textarea
+                      id="message"
+                      value={applicationForm.message}
+                      onChange={(e) => setApplicationForm(prev => ({ ...prev, message: e.target.value }))}
+                      placeholder="Вопросы, пожелания, дополнительная информация..."
+                      rows={3}
+                      className="text-lg p-3"
+                    />
+                  </div>
+                  
+                  <Button type="submit" className="w-full bg-red-600 hover:bg-red-700 text-xl py-4">
+                    ОТПРАВИТЬ ЗАЯВКУ НА КОНТРАКТ
                   </Button>
                 </form>
               </CardContent>
@@ -320,55 +352,137 @@ const Index = () => {
         </div>
       </section>
 
+      {/* Consultation Form Section */}
+      <section className="py-16 bg-blue-900 text-white">
+        <div className="container mx-auto px-4">
+          <div className="max-w-2xl mx-auto text-center">
+            <h3 className="text-3xl md:text-4xl font-bold mb-4">
+              ПОЛУЧИТЕ БЕСПЛАТНУЮ КОНСУЛЬТАЦИЮ
+            </h3>
+            <p className="text-xl text-blue-100 mb-8">
+              Остались вопросы? Наши специалисты ответят на все ваши вопросы
+            </p>
+            
+            <Card className="bg-white text-gray-900">
+              <CardContent className="p-8">
+                <form onSubmit={handleConsultationSubmit} className="space-y-6">
+                  <div className="space-y-2">
+                    <Label htmlFor="consultation-name" className="text-lg font-semibold">Ваше имя *</Label>
+                    <Input
+                      id="consultation-name"
+                      value={consultationForm.name}
+                      onChange={(e) => setConsultationForm(prev => ({ ...prev, name: e.target.value }))}
+                      placeholder="Введите ваше имя"
+                      className="text-lg p-3"
+                      required
+                    />
+                  </div>
+                  <div className="space-y-2">
+                    <Label htmlFor="consultation-phone" className="text-lg font-semibold">Телефон *</Label>
+                    <Input
+                      id="consultation-phone"
+                      type="tel"
+                      value={consultationForm.phone}
+                      onChange={(e) => setConsultationForm(prev => ({ ...prev, phone: e.target.value }))}
+                      placeholder="+7 (999) 123-45-67"
+                      className="text-lg p-3"
+                      required
+                    />
+                  </div>
+                  <Button type="submit" className="w-full bg-red-600 hover:bg-red-700 text-xl py-4">
+                    ЗАКАЗАТЬ КОНСУЛЬТАЦИЮ
+                  </Button>
+                </form>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+      </section>
+
+      {/* Contact Information */}
+      <section className="py-16 bg-gray-50">
+        <div className="container mx-auto px-4">
+          <h3 className="text-3xl md:text-4xl font-bold text-center text-gray-900 mb-12">
+            КОНТАКТЫ
+          </h3>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+            <div>
+              <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <Icon name="Phone" size={32} className="text-blue-600" />
+              </div>
+              <h4 className="text-xl font-bold text-gray-900 mb-2">ГОРЯЧАЯ ЛИНИЯ</h4>
+              <p className="text-2xl text-blue-600 font-bold">8 (800) 100-12-53</p>
+              <p className="text-gray-600">Звонок бесплатный</p>
+            </div>
+            
+            <div>
+              <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <Icon name="Mail" size={32} className="text-green-600" />
+              </div>
+              <h4 className="text-xl font-bold text-gray-900 mb-2">EMAIL</h4>
+              <p className="text-lg text-green-600">info@защитник.рф</p>
+              <p className="text-gray-600">Ответим в течение 24 часов</p>
+            </div>
+            
+            <div>
+              <div className="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <Icon name="Clock" size={32} className="text-purple-600" />
+              </div>
+              <h4 className="text-xl font-bold text-gray-900 mb-2">РЕЖИМ РАБОТЫ</h4>
+              <p className="text-lg text-purple-600">24/7</p>
+              <p className="text-gray-600">Без выходных</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Footer */}
-      <footer className="bg-slate-900 text-white py-12">
+      <footer className="bg-gray-900 text-white py-12">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-            <div>
-              <div className="flex items-center space-x-2 mb-4">
-                <Icon name="Shield" size={24} className="text-primary" />
-                <h4 className="text-lg font-semibold">Защитник.РФ</h4>
+            <div className="col-span-1 md:col-span-2">
+              <div className="flex items-center space-x-4 mb-4">
+                <div className="w-12 h-12 bg-red-600 rounded-full flex items-center justify-center">
+                  <span className="text-white font-bold text-xl">З</span>
+                </div>
+                <div>
+                  <h4 className="text-xl font-bold">ЗАЩИТНИК.РФ</h4>
+                  <p className="text-gray-400">Контракт на военную службу</p>
+                </div>
               </div>
-              <p className="text-slate-400">
-                Официальный портал для заключения контрактов на военную службу
+              <p className="text-gray-400 mb-4">
+                Официальный портал для заключения контрактов на военную службу 
+                в рамках специальной военной операции
               </p>
-            </div>
-            
-            <div>
-              <h5 className="font-semibold mb-3">Разделы</h5>
-              <div className="space-y-2">
-                <a href="#professions" className="block text-slate-400 hover:text-white transition-colors">Профессии</a>
-                <a href="#regions" className="block text-slate-400 hover:text-white transition-colors">Регионы</a>
-                <a href="#conditions" className="block text-slate-400 hover:text-white transition-colors">Условия</a>
+              <div className="text-gray-400">
+                <p>Телефон: <span className="text-blue-400">8 (800) 100-12-53</span></p>
+                <p>Email: <span className="text-blue-400">info@защитник.рф</span></p>
               </div>
             </div>
             
             <div>
-              <h5 className="font-semibold mb-3">Контакты</h5>
-              <div className="space-y-2 text-slate-400">
-                <div className="flex items-center space-x-2">
-                  <Icon name="Phone" size={16} />
-                  <span>8 (800) 100-00-00</span>
-                </div>
-                <div className="flex items-center space-x-2">
-                  <Icon name="Mail" size={16} />
-                  <span>info@защитник.рф</span>
-                </div>
+              <h5 className="text-lg font-semibold mb-4">Услуги</h5>
+              <div className="space-y-2 text-gray-400">
+                <p>Заключение контракта</p>
+                <p>Консультации</p>
+                <p>Отбор кандидатов</p>
+                <p>Поддержка контрактников</p>
               </div>
             </div>
             
             <div>
-              <h5 className="font-semibold mb-3">Поддержка</h5>
-              <div className="space-y-2">
-                <a href="#" className="block text-slate-400 hover:text-white transition-colors">Часто задаваемые вопросы</a>
-                <a href="#" className="block text-slate-400 hover:text-white transition-colors">Техподдержка</a>
-                <a href="#" className="block text-slate-400 hover:text-white transition-colors">Правила</a>
+              <h5 className="text-lg font-semibold mb-4">Информация</h5>
+              <div className="space-y-2 text-gray-400">
+                <p>Требования</p>
+                <p>Условия службы</p>
+                <p>Льготы и гарантии</p>
+                <p>Часто задаваемые вопросы</p>
               </div>
             </div>
           </div>
           
-          <div className="border-t border-slate-800 mt-8 pt-8 text-center text-slate-400">
-            <p>&copy; 2024 Защитник.РФ. Все права защищены.</p>
+          <div className="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
+            <p>&copy; 2024 ЗАЩИТНИК.РФ. Все права защищены.</p>
           </div>
         </div>
       </footer>
